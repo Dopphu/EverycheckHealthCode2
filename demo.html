@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郑州大学数据中台2020</title>
+    <style>
+        #container{
+            margin: 0px auto;
+            width: 340px;
+            height: 600px;
+            /* border: 2px solid rgb(138, 134, 134); */
+        }
+        #headerImg{
+            width: 340px;
+        }
+        #timeMsg{
+            font-size: 13px;
+            text-align: center;
+        }
+        #dateMsg{
+            color: purple;
+            font-size: medium;
+        }
+        #validTime{
+            color: rgb(179, 46, 46);
+            font-size: large;
+        }
+        #codeImg{
+            width: 340px;
+            height: 95%;
+            margin-top: -5px;
+        }
+        hr{
+            color: rgb(255, 255, 255);
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            console.log(new Date());
+            var dateMsg = document.getElementById("dateMsg");
+            var date = new Date();
+            var month = date.getMonth()+1;
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            dateMsg.innerHTML =  month+ "月" +day+ "日 "+hour+":"+minute;
+
+            var validTime =  document.getElementById("validTime");
+            var validM = 9;
+            var validS = 599;
+            var timer = setInterval(function(){
+                var realS = validS%60 
+                validTime.innerHTML = validM + "分" + (realS>9?realS:"0"+realS) +"秒";
+                validS=validS-1;
+                if(validS%60==0){
+                    validM=validM-1;
+                }
+            }, 1000);
+
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <img id="headerImg" src="https://cdn.jsdelivr.net/gh/Dopphu/PicX-images@main/20210425/健康打开header.6xgthwhmtw00.jpg" alt="郑州的logo">
+        </div>
+        <div style="width: 95%; margin: 0px auto;"><hr/></div>
+        <div id="timeMsg">
+            获取时间: &nbsp;<span id="dateMsg">07月10日 17:17</span>&nbsp;&nbsp;&nbsp;有效期剩余 <span id="validTime">9分49秒</span>
+        </div>
+        <div style="width: 95%; margin: 0px auto;"><hr/></div>
+        <div>
+            <img id="codeImg" src="https://cdn.jsdelivr.net/gh/Dopphu/PicX-images@main/20210425/demo.5cwok5ydpj80.jpg" alt="codeImg">
+        </div>
+    </div>
+</body>
+</html>
